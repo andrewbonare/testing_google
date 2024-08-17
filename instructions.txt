@@ -1,0 +1,71 @@
+#include <iostream>
+/*
+TESTING TYPES OVERVIEW:
+
+  Unit Testing: Focuses on individual components or functions of the 
+  software to verify that each one works correctly in isolation.
+  
+  Integration Testing: Ensures that different components or systems 
+  work together as expected.
+
+1. Unit Testing Example: String Manipulation
+Scenario: Write a function that reverses a string. Create unit tests to ensure the function works correctly.
+
+    Test Cases:
+    
+    Test reverseString("hello") should return "olleh".
+    Test reverseString("") should return an empty string.
+    Test reverseString("abcd") should return "dcba".
+
+2. Integration Testing Example: Shopping Cart System
+Scenario: You have a simple shopping cart system with the ability to add items and calculate the total cost. Write an integration test to ensure these components work together.
+
+  Test Cases:
+  
+  Add multiple items to the cart and verify the total cost is correct.
+  Test the cart with no items (should return a total of 0).
+  Add items with the same name but different prices to check proper handling.
+
+  Class Requirements:
+    Class Name: Library
+  
+      Attributes:
+        std::vector<Book> books: A collection of Book objects in the library.
+      Methods:
+        void addBook(const Book &book): Adds a Book to the books vector.
+        bool borrowBook(const std::string &title): Marks a book as borrowed 
+          if it is available. Returns true if the operation is successful, otherwise false.
+        bool returnBook(const std::string &title): Marks a book as returned if 
+          it was borrowed. Returns true if the operation is successful, otherwise false.
+
+    Class Name: Book
+    
+    Attributes:
+      std::string title: The title of the book.
+      bool isBorrowed: A flag indicating whether the book is borrowed 
+          (true) or available (false).
+    Constructor:
+        Initializes the title attribute and sets isBorrowed to false.
+
+
+GOOGLE TEST OVERVIEW
+
+Test Suites in GoogleTest
+
+In GoogleTest, a test suite is a collection of related tests that are grouped together. Previously called test cases, they help organize tests that share a common setup or context.
+
+Basic Structure
+A basic test in GoogleTest is written using the TEST macro. Here’s a simple example:
+TEST(TestSuiteName, TestName) {
+    // Test code goes here
+}
+
+
+NEXT STEPS:
+
+System Testing: Validates the complete and integrated software system to ensure compliance with the specified requirements.
+Acceptance Testing: Determines whether the software is ready for release, often involving the end-user or client.
+Regression Testing: Ensures that new code changes do not negatively impact the existing functionality.
+
+*/
+int main() { std::cout << "Hello World!\n"; }
