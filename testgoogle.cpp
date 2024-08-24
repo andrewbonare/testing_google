@@ -38,11 +38,34 @@ std::vector<item> basket;
    return t;
  }
   float fetchPrice(item a){return basket[findItem(a)].price;}
- 
- 
-    
-
 };
+
+class Discount{
+private:
+  double discountAmount;
+  bool isPercentage;
+public:
+  Discount(double da, bool ip){
+    discountAmount = da;
+    isPercentage = ip;
+  }
+  double getDiscountAmount(){return discountAmount;}
+  bool isPercentageDiscount(){return isPercentage;}
+  void applyDiscount(ShoppingCart& cart){
+    if(ispercentage){
+      float s; // for subtrahend
+      for(int i = 0; i < cart.basket.size(); i++){
+	s = cart.basket[i].price *  discountAmount;
+	basket[i] -= s;
+      }
+      
+    } else{
+      basket[i] -= discountAmount;
+    }
+  }
+  
+};
+
 
 TEST(Test, Unit){
   EXPECT_EQ(rever("hello"), "olleh");
