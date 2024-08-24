@@ -19,6 +19,14 @@ class ShoppingCart{
 std::vector<item> basket;
  public:
  void addItem(item a){basket.push_back(a);}
+  int findItem(item a){
+    for(int i = 0; i < basket.size(); i++){
+      if(basket[i] == a){
+	return i;
+      }
+    }
+  }
+  void removeItem(item a){basket.erase(findItem(name));}
  float total(){
    float t;
    if(basket.empty()){
@@ -29,6 +37,8 @@ std::vector<item> basket;
    }
    return t;
  }
+  float fetchPrice(item a){return basket[findItem(a)].price;}
+ 
  
     
 
