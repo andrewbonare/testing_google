@@ -28,7 +28,7 @@ class ShoppingCart{
  std::vector<item> basket;
  void addItem(item a){basket.push_back(a);}
   int findItem(item a){
-    for(int i = 0; i < basket.size(); i++){
+    for(size_t i = 0; i < basket.size(); i++){
       if(basket[i] == a){
 	return i;
       }
@@ -40,7 +40,7 @@ class ShoppingCart{
    if(basket.empty()){
      return 0;
    }
-   for(int i = 0; i < basket.size(); i++){
+   for(size_t i = 0; i < basket.size(); i++){
      t += basket[i].price;
    }
    return t;
@@ -62,7 +62,7 @@ public:
   void applyDiscount(ShoppingCart& cart){
     if(isPercentage){
       float s; // for subtrahend
-      for(int i = 0; i < cart.basket.size(); i++){
+      for(size_t i = 0; i < cart.basket.size(); i++){
 	s = cart.basket[i].price *  (discountAmount / 100);
 	cart.basket[i].price -= s;
 	//std::cout << "SANITY CHECK RAAAAH\n";
@@ -70,7 +70,7 @@ public:
       }
       
     } else{
-       for(int i = 0; i < cart.basket.size(); i++){
+       for(size_t i = 0; i < cart.basket.size(); i++){
 	 cart.basket[i].price -= discountAmount;
        }
     }
