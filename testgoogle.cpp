@@ -11,7 +11,7 @@ std::string rever(std::string input){
 
 struct item{
   std::string name;
-  float price;
+  double price;
 
     // Overload the == operator for item comparison
   bool operator==(const item& other) const {
@@ -35,7 +35,7 @@ class ShoppingCart{
     }
   }
   void removeItem(item a){basket.erase(basket.begin() + findItem(a));}
- float total(){
+ double total(){
    float t;
    if(basket.empty()){
      return 0;
@@ -45,7 +45,7 @@ class ShoppingCart{
    }
    return t;
  }
-  float fetchPrice(item a){return basket[findItem(a)].price;}
+  double fetchPrice(item a){return basket[findItem(a)].price;}
 };
 
 class Discount{
@@ -61,7 +61,7 @@ public:
   bool isPercentageDiscount(){return isPercentage;}
   void applyDiscount(ShoppingCart& cart){
     if(isPercentage){
-      float s; // for subtrahend
+      double  s; // for subtrahend
       for(size_t i = 0; i < cart.basket.size(); i++){
 	s = cart.basket[i].price *  (discountAmount / 100);
 	cart.basket[i].price -= s;
