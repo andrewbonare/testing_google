@@ -78,6 +78,27 @@ public:
   
 };
 
+class User{
+private:
+  std::string name;
+  std::string email;
+  std::string address;
+  ShoppingCart cart; 
+  User(const std::string& name, const std::string& email, const std::string&
+       address){} // wait i could have been doing this?
+
+  void addToCart(item a){cart.basket.push_back(a)};
+  
+  std::string getUserInfo(){
+    return "Name: " + name + " Email: " + email + " Address: " + address;
+  }
+    
+  }
+  
+};
+
+
+
 
 TEST(Test, Unit){
   EXPECT_EQ(rever("hello"), "olleh");
