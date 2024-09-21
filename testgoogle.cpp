@@ -12,6 +12,7 @@ std::string rever(std::string input){
 struct item{
   std::string name;
   double price;
+  int quantity;
 
     // Overload the == operator for item comparison
   bool operator==(const item& other) const {
@@ -87,13 +88,23 @@ private:
   User(const std::string& name, const std::string& email, const std::string&
        address){} // wait i could have been doing this?
 
-  void addToCart(item a){cart.basket.push_back(a)};
+  void addToCart(item a){cart.basket.push_back(a);}
   
   std::string getUserInfo(){
     return "Name: " + name + " Email: " + email + " Address: " + address;
   }
-    
+  void checkout(){
+    for(size_t i = 0; i < cart.basket.size(); i++){
+      cart.basket[i].quantity -= 1;
+      
+      
+      
+    }
+    cart.basket.clear();
+
   }
+    
+  
   
 };
 
@@ -111,10 +122,12 @@ TEST(Test, Integration){
   item shirt;
   shirt.name = "shirt";
   shirt.price = 10;
+  shirt.quantity = 100;
   target.addItem(shirt);
   item shirt2;
   shirt2.name = "shirt";
   shirt.price = 20;
+  shirt.quantity = 100;
   target.addItem(shirt);
   EXPECT_EQ(target.total(), 30);
   
@@ -126,6 +139,7 @@ TEST(Test, DiscountPercent){ //doesn't really fit the above naming scheme
     item shirt;
     shirt.name = "shirt";
     shirt.price = 10;
+    shirt.quantity = 100;
     target.addItem(shirt);
     Discount fiftyOff(50, true);
 
@@ -140,6 +154,7 @@ TEST(Test, DiscountFlatAmount){
     item shirt;
     shirt.name = "shirt";
     shirt.price = 10;
+    shirt.quantity = 100;
     target.addItem(shirt);
     Discount fiveOff(5, false);
 
