@@ -84,10 +84,21 @@ private:
   std::string name;
   std::string email;
   std::string address;
-  ShoppingCart cart; 
+  ShoppingCart cart;
+public:
   User(const std::string& name, const std::string& email, const std::string&
        address){} // wait i could have been doing this?
 
+  void setName(std::string n){name = n;}
+  void setEmail(std::string e){email = e;}
+  void setAddress(std::string a){address = a;}
+  void setCart(ShoppingCart c){cart = c;}
+
+  std::string getName(){return name;}
+  std::string getEmail(){return email;}
+  std::string getAddress(){return address;}
+  ShoppingCart getCart(){return cart;}
+  
   void addToCart(item a){cart.basket.push_back(a);}
   
   std::string getUserInfo(){
@@ -164,7 +175,10 @@ TEST(Test, DiscountFlatAmount){
     EXPECT_EQ(target.total(), 5);
 }
 
-
+TEST(Test, User){
+  User jdoe("John Doe", "jdoe@mit.edu", "22 Nowhere Lane, Boston, MT, USA");
+  EXPECT_EQ(jdoe.getName(), "John Doe");
+}
     
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
