@@ -179,9 +179,22 @@ TEST(Test, DiscountFlatAmount){
     EXPECT_EQ(target.total(), 5);
 }
 
-TEST(Test, User){
+TEST(Test, UserGetters){
   User jdoe("John Doe", "jdoe@mit.edu", "22 Nowhere Lane, Boston, MT, USA");
   EXPECT_EQ(jdoe.getName(), "John Doe");
+  EXPECT_EQ(jdoe.getEmail(), "jdoe@mit.edu");
+  EXPECT_EQ(jdoe.getAddress(), "22 Nowhere Lane, Boston, MT, USA");
+}
+
+TEST(Test, UserSetters){
+  User jdoe("John Doe", "jdoe@mit.edu", "22 Nowhere Lane, Boston, MT, USA");
+  jdoe.setName("John Smith");
+  jdoe.setEmail("jsmith@mit.edu");
+  jdoe.setAddress("42 Placeholder Avenue, Boston, MT, USA");
+  
+  EXPECT_EQ(jdoe.getName(), "John Smith");
+  EXPECT_EQ(jdoe.getEmail(), "jsmith@mit.edu");
+  EXPECT_EQ(jdoe.getAddress(), "42 Placeholder Avenue, Boston, MT, USA");
 }
     
 int main(int argc, char **argv) {
