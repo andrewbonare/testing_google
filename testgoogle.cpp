@@ -86,8 +86,12 @@ private:
   std::string address;
   ShoppingCart cart;
 public:
-  User(const std::string& name, const std::string& email, const std::string&
-       address){} // wait i could have been doing this?
+  User(std::string n, std::string e, std::string
+       a){
+    name = n;
+    email = e;
+    address = a;
+  } 
 
   void setName(std::string n){name = n;}
   void setEmail(std::string e){email = e;}
