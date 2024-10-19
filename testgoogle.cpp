@@ -210,7 +210,7 @@ TEST(Test, UserSetters){
   EXPECT_EQ(jdoe.getAddress(), "42 Placeholder Avenue, Boston, MT, USA");
 }
 
-/*TEST(Test, UserAddToCart){
+TEST(Test, UserAddToCart){
   User jdoe("John Doe", "jdoe@mit.edu", "22 Nowhere Lane, Boston, MT, USA");
   item shirt;
   shirt.name = "shirt";
@@ -222,7 +222,7 @@ TEST(Test, UserSetters){
   ShoppingCart crt = jdoe.getCart();
   EXPECT_EQ(crt.basket[0], shirt);
   
-}*/
+}
 
     
 int main(int argc, char **argv) {
