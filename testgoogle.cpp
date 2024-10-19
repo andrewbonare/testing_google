@@ -111,7 +111,7 @@ public:
   void addToCart(item a){cart.basket.push_back(a);}
   
   std::string getUserInfo(){
-    return "Name: " + name + " Email: " + email + " Address: " + address;
+    return "Name: " + this->getName() + " Email: " + this->getEmail() + " Address: " + this->getAddress();
   }
   void checkout(){
     for(size_t i = 0; i < cart.basket.size(); i++){
@@ -222,6 +222,10 @@ TEST(Test, UserAddToCart){
   ShoppingCart crt = jdoe.getCart();
   EXPECT_EQ(crt.basket[0], shirt);
   
+}
+TEST(Test, UserGetUserInfo){
+  User jdoe("John Doe", "jdoe@mit.edu", "22 Nowhere Lane, Boston, MT, USA");
+    EXPECT_EQ(jdoe.getUserInfo(), "Name: John Doe Email: jdoe@mit.edu Address: 22 Nowhere Lane, Boston, MT, USA");
 }
 
     
