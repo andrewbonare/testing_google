@@ -26,8 +26,8 @@ class ShoppingCart{
  private:
 
  public:
- std::vector<item> basket;
- void addItem(item a){basket.push_back(a);}
+  std::vector<item> basket;
+  void addItem(item a){basket.push_back(a);}
   int findItem(item a){
     for(size_t i = 0; i < basket.size(); i++){
       if(basket[i] == a){
@@ -36,7 +36,8 @@ class ShoppingCart{
     }
   }
   void removeItem(item a){basket.erase(basket.begin() + findItem(a));}
- double total(){
+  
+  double total(){
    float t;
    if(basket.empty()){
      return 0;
@@ -47,6 +48,10 @@ class ShoppingCart{
    return t;
  }
   double fetchPrice(item a){return basket[findItem(a)].price;}
+  bool operator==(const ShoppingCart& other) const {
+    return basket == other.basket;
+  }
+  
 };
 
 class Discount{
@@ -181,9 +186,17 @@ TEST(Test, DiscountFlatAmount){
 
 TEST(Test, UserGetters){
   User jdoe("John Doe", "jdoe@mit.edu", "22 Nowhere Lane, Boston, MT, USA");
+  item shirt;
+  shirt.name = "shirt";
+  shirt.price = 10;
+  shirt.quantity = 100;
+  ShoppingCart c;
+  c.addItem(shirt);
+  jdoe.setCart(c);
   EXPECT_EQ(jdoe.getName(), "John Doe");
   EXPECT_EQ(jdoe.getEmail(), "jdoe@mit.edu");
   EXPECT_EQ(jdoe.getAddress(), "22 Nowhere Lane, Boston, MT, USA");
+  EXPECT_EQ(jdoe.getCart(), c);
 }
 
 TEST(Test, UserSetters){
@@ -196,6 +209,21 @@ TEST(Test, UserSetters){
   EXPECT_EQ(jdoe.getEmail(), "jsmith@mit.edu");
   EXPECT_EQ(jdoe.getAddress(), "42 Placeholder Avenue, Boston, MT, USA");
 }
+
+/*TEST(Test, UserAddToCart){
+  User jdoe("John Doe", "jdoe@mit.edu", "22 Nowhere Lane, Boston, MT, USA");
+  item shirt;
+  shirt.name = "shirt";
+  shirt.price = 10;
+  shirt.quantity = 100;
+  ShoppingCart ct;
+  jdoe.setCart(ct);
+  jdoe.addToCart(shirt);
+  ShoppingCart crt = jdoe.getCart();
+  EXPECT_EQ(crt.basket[0], shirt);
+  
+}*/
+
     
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
